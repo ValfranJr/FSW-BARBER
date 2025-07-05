@@ -22,7 +22,7 @@ model Barbershop {
   name       String
   address    String
   phones     String[]
-  decription String
+  description String
   imageUrl   String
   createdAt  DateTime            @default(now())
   updatedAt  DateTime            @updatedAt
