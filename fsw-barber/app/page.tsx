@@ -63,7 +63,7 @@ const Home = async () => {
           Recomendados
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map(barbershop => (
+          {barbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
@@ -81,7 +81,7 @@ const Home = async () => {
       <footer>
         <Card >
           <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">© 2023 Copyright <span className="font-bold">FSW Barber</span></p>
+            <p className="text-sm text-gray-400">© 2025 Copyright <span className="font-bold">FSW Barber</span></p>
           </CardContent>
         </Card>
       </footer>
