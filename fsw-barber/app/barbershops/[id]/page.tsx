@@ -1,7 +1,15 @@
+import PhoneItem from "@/app/_components/phone-item"
 import ServiceItem from "@/app/_components/service-item"
 import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
+import {
+  ChevronLeftIcon,
+  MapPinIcon,
+  MenuIcon,
+  Phone,
+  SmartphoneIcon,
+  StarIcon,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -23,7 +31,6 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
   if (!barbershop) {
     return notFound()
   }
-
   return (
     <div>
       {/* Imagem */}
@@ -52,6 +59,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           <MenuIcon />
         </Button>
       </div>
+      {/* Titulo */}
       <div className="border-b border-solid p-5">
         <h1 className="mb-3 text-xl font-bold">{barbershop.name}</h1>
         <div className="mb-2 flex items-center gap-2">
@@ -68,13 +76,20 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         <h2 className="text-xs font-bold uppercase text-gray-400">Sobre nós</h2>
         <p className="text-justify text-sm">{barbershop.description}</p>
       </div>
-      <div className="p-5 space-y-3">
+      {/* Serviços */}
+      <div className="space-y-3 border-b border-solid p-5">
         <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
         <div className="space-y-3">
           {barbershop.services.map((service) => (
             <ServiceItem key={service.id} service={service} />
           ))}
         </div>
+      </div>
+      {/* Contato */}
+      <div className="space-y-3 p-5">
+        {barbershop.phones.map((phone) => (
+          <PhoneItem key={phone} phone={phone}></PhoneItem>
+        ))}
       </div>
     </div>
   )
