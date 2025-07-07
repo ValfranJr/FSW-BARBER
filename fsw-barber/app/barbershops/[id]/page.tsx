@@ -8,14 +8,11 @@ import {
   ChevronLeftIcon,
   MapPinIcon,
   MenuIcon,
-  Phone,
-  SmartphoneIcon,
   StarIcon,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 
 interface BarbershopPageProps {
   params: {

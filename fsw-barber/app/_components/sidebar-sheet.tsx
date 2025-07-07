@@ -15,7 +15,10 @@ const SidebarSheet = () => {
 
       <div className="flex items-center gap-3 border-b border-solid py-5">
         <Avatar>
-          <AvatarImage src="userimg.png" alt="Avatar" />
+          <AvatarImage
+            src="https://img.freepik.com/vetores-premium/set-de-icones-de-avatar-masculino-para-perfis-de-midia-social_1281173-3806.jpg?semt=ais_hybrid&w=740"
+            alt="Avatar"
+          />
         </Avatar>
         <div>
           <p className="font-bold">Valfran Jr.</p>
