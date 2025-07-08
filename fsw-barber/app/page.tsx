@@ -1,13 +1,14 @@
 import { Button } from "./_components/ui/button";
 import Header from "./_components/header";
 import { Input } from "./_components/ui/input";
-import {  SearchIcon } from "lucide-react";
+import {   SearchIcon } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "./_components/ui/card";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
 import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "./_components/booking-item";
+import Search from "./_components/search";
 
 
 
@@ -20,7 +21,7 @@ const Home = async () => {
   })
 
   return (
-    <div >
+    <div>
       {/* header */}
       <Header />
       <div className="p-5">
@@ -28,26 +29,27 @@ const Home = async () => {
         <h2 className="text-xl font-bold">Olá, Valfran!</h2>
         <p>Sábado, 05 de julho</p>
         {/* Busca */}
-        <div className="flex items-center gap-2 mt-6">
-          <Input placeholder="Faça sua busca" />
-          <Button>
-            <SearchIcon />
-          </Button>
+        <div className="mt-6">
+          <Search/>
         </div>
         {/* Busca Rápida */}
-        <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option) => (
-           <Button className="gap-2" variant="secondary" key={option.title}>
-            <Image alt={option.title} src={option.imageUrl} width={16} height={16}></Image>
-            {option.title}</Button>
-
+            <Button className="gap-2" variant="secondary" key={option.title}>
+              <Image
+                alt={option.title}
+                src={option.imageUrl}
+                width={16}
+                height={16}
+              ></Image>
+              {option.title}
+            </Button>
           ))}
-
         </div>
-
         {/* Imagem */}
-        <div className="relative w-full h-[150px] mt-6 rounded-xl ">
-          <Image alt="agende nos melhores com Fsw Barber"
+        <div className="relative mt-6 h-[150px] w-full rounded-xl">
+          <Image
+            alt="agende nos melhores com Fsw Barber"
             src="/banner-01.png"
             fill
             className="object-content"
@@ -57,9 +59,8 @@ const Home = async () => {
         </div>
         {/* Agendamento */}
         <BookingItem />
-
         {/* Recomendados */}
-        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-3">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
@@ -68,17 +69,17 @@ const Home = async () => {
           ))}
         </div>
         {/* Populares */}
-        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-3">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Populares
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {popularBarbershops.map(barbershop => (
+          {popularBarbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
       {/* footer */}
     </div>
-  );
+  )
 }
 export default Home;
