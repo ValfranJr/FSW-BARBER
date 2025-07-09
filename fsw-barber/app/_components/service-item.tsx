@@ -124,7 +124,6 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
       })
       await createBooking({
         serviceId: service.id,
-        userId: (data?.user as any)?.id,
         date: newDate,
       })
       toast.success("Reserva realizada com sucesso!")
@@ -257,14 +256,12 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                   </div>
                 )}
                 <SheetFooter className="mt-5 px-5">
-                  <SheetClose asChild>
                     <Button
                       onClick={handleCreateBooking}
                       disabled={!selectedDay || !selectedTime}
                     >
                       Confirmar
                     </Button>
-                  </SheetClose>
                 </SheetFooter>
               </SheetContent>
             </Sheet>
@@ -273,7 +270,8 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
       </CardContent>
     </Card>
 
-    <Dialog open={signInDialogIsOpen} onOpenChange={(open) => setSignInDialogIsOpen(open)}>
+    <Dialog open={signInDialogIsOpen}
+    onOpenChange={(open) => setSignInDialogIsOpen(open)}>
       <DialogContent className="w-[90%]">
         <SignInDialog />
       </DialogContent>
