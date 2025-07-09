@@ -98,6 +98,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   }
 
 
+
   const handleBookingSheetOpenChange = () => {
     setSelectedDay(undefined)
     setSelectedTime(undefined)
@@ -126,6 +127,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         serviceId: service.id,
         date: newDate,
       })
+      handleBookingSheetOpenChange()
       toast.success("Reserva realizada com sucesso!")
     } catch (error) {
       console.log(error)
