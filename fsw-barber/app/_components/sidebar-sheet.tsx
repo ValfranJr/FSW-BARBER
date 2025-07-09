@@ -66,9 +66,11 @@ const SidebarSheet = () => {
             </Link>
           </Button>
         </SheetClose>
-        <Button className="justify-start gap-2" variant="ghost">
-          <CalendarIcon size={18} />
-          Agendamento
+        <Button className="justify-start gap-2" variant="ghost" asChild>
+          <Link href={"/bookings"}>
+            <CalendarIcon size={18} />
+            Agendamento
+          </Link>
         </Button>
       </div>
 
@@ -92,15 +94,15 @@ const SidebarSheet = () => {
 
       {data?.user && (
         <div className="flex flex-col gap-2 border-b border-solid py-5">
-        <Button
-          className="justify-start gap-2"
-          variant="ghost"
-          onClick={handleLogOutClick}
-        >
-          <LogOutIcon className="justify-start" size={18} />
-          Sair da Conta
-        </Button>
-      </div>
+          <Button
+            className="justify-start gap-2"
+            variant="ghost"
+            onClick={handleLogOutClick}
+          >
+            <LogOutIcon className="justify-start" size={18} />
+            Sair da Conta
+          </Button>
+        </div>
       )}
     </SheetContent>
   )
