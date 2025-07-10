@@ -5,7 +5,6 @@ import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,

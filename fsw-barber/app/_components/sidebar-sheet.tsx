@@ -10,9 +10,6 @@ import Link from "next/link"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "./ui/dialog"
 import { signIn, signOut, useSession } from "next-auth/react"

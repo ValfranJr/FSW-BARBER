@@ -4,7 +4,6 @@ import { authOptions } from "../_lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import BookingItem from "../_components/booking-item";
-import { date } from "zod";
 
 const Bookings = async () => {
     const session = await getServerSession(authOptions)

@@ -1,6 +1,6 @@
 "use client"
 
-import { Booking, Prisma } from "../generated/prisma/client"
+import { Prisma } from "../generated/prisma/client"
 import { Badge } from "./ui/badge"
 import { Card, CardContent } from "./ui/card"
 import { Avatar, AvatarImage } from "./ui/avatar"
