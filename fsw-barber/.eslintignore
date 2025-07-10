@@ -1,1 +1,7 @@
-**/generated/**
+# Pastas comuns de arquivos gerados
+node_modules/
+.next/
+prisma/generated/
+app/generated/
+**/__generated__/
+**/*.generated.ts
