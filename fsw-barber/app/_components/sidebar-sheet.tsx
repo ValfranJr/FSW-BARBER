@@ -7,17 +7,12 @@ import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/search"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import Link from "next/link"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "./ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { signIn, signOut, useSession } from "next-auth/react"
 import SignInDialog from "./sign-in-dialog"
 
 const SidebarSheet = () => {
   const { data } = useSession()
-  const handleloginWithGoogleClick = () => signIn("google")
   const handleLogOutClick = () => signOut()
 
   return (
@@ -63,12 +58,19 @@ const SidebarSheet = () => {
             </Link>
           </Button>
         </SheetClose>
-        <Button className="justify-start gap-2" variant="ghost" asChild>
-          <Link href={"/bookings"}>
+        {data?.user ? (
+          <Button className="justify-start gap-2" variant="ghost" asChild>
+            <Link href={"/bookings"}>
+              <CalendarIcon size={18} />
+              Agendamento
+            </Link>
+          </Button>
+        ) : (
+          <Button className="justify-start gap-2" variant="ghost" disabled>
             <CalendarIcon size={18} />
-            Agendamento
-          </Link>
-        </Button>
+            Usuário não logado
+          </Button>
+        )}
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid py-5">

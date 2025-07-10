@@ -37,17 +37,18 @@ const Search = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="flex gap-2"
-      >
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex gap-2">
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input className="w-full" placeholder="Faça sua busca..." {...field} />
+                <Input
+                  className="w-full"
+                  placeholder="Faça sua busca..."
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
