@@ -1,7 +1,7 @@
 import Header from "../_components/header"
 import { db } from "../_lib/prisma"
 import { authOptions } from "../_lib/auth"
-import { getServerSession } from "next-auth"
+import { getServerSession, User } from "next-auth"
 import { notFound } from "next/navigation"
 import BookingItem from "../_components/booking-item"
 
@@ -12,7 +12,7 @@ const Bookings = async () => {
   }
   const confirmedBookings = await db.booking.findMany({
     where: {
-      userId: (session.user as any).id,
+      userId: (session.user as User).id,
       date: {
         gte: new Date(),
       },
@@ -30,7 +30,7 @@ const Bookings = async () => {
   })
   const concludedBookings = await db.booking.findMany({
     where: {
-      userId: (session.user as any).id,
+      userId: (session.user as User).id,
       date: {
         lt: new Date(),
       },

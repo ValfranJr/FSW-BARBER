@@ -8,7 +8,7 @@ import BookingItem from "./_components/booking-item"
 import Search from "./_components/search"
 import Link from "next/link"
 import { authOptions } from "./_lib/auth"
-import { getServerSession } from "next-auth"
+import { getServerSession, User } from "next-auth"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 
@@ -23,7 +23,7 @@ const Home = async () => {
   const confirmedBookings = session?.user
     ? await db.booking.findMany({
         where: {
-          userId: (session.user as any).id,
+          userId: (session.user as User).id,
           date: {
             gte: new Date(),
           },

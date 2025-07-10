@@ -17,7 +17,6 @@ import {
 } from "./ui/sheet"
 import Image from "next/image"
 import PhoneItem from "./phone-item"
-import BarbershopPage from "../barbershops/[id]/page"
 import { Button } from "./ui/button"
 import {
   Dialog,
