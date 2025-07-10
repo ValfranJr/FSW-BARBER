@@ -1,9 +1,6 @@
 import { Button } from "./_components/ui/button"
 import Header from "./_components/header"
-import { Input } from "./_components/ui/input"
-import { SearchIcon } from "lucide-react"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/search"
@@ -12,6 +9,8 @@ import Search from "./_components/search"
 import Link from "next/link"
 import { authOptions } from "./_lib/auth"
 import { getServerSession } from "next-auth"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -26,8 +25,8 @@ const Home = async () => {
         where: {
           userId: (session.user as any).id,
           date: {
-            gte: new Date()
-          }
+            gte: new Date(),
+          },
         },
         include: {
           service: {
@@ -48,8 +47,18 @@ const Home = async () => {
       <Header />
       <div className="p-5">
         {/* Texto */}
-        <h2 className="text-xl font-bold">Olá, Valfran!</h2>
-        <p>Sábado, 05 de julho</p>
+        <h2 className="text-xl font-bold">
+          Olá, {session?.user ? session?.user?.name : "Bem vindo!"}
+        </h2>
+        <p>
+          <span className="capitalize">
+            {format(new Date(), "EEEE, dd", { locale: ptBR })}
+          </span>
+          <span>&nbsp;de&nbsp;</span>
+          <span className="capitalize">
+            {format(new Date(), "MMMM", { locale: ptBR })}
+          </span>
+        </p>
         {/* Busca */}
         <div className="mt-6">
           <Search />
