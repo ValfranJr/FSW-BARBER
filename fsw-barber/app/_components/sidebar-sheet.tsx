@@ -68,7 +68,7 @@ const SidebarSheet = () => {
         ) : (
           <Button className="justify-start gap-2" variant="ghost" disabled>
             <CalendarIcon size={18} />
-            Usuário não logado
+            Você não tem agendamentos
           </Button>
         )}
       </div>
