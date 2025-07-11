@@ -29,9 +29,9 @@ git clone https://github.com/ValfranJr/FSW-BARBER.git
 cd fsw-barber
 ````
 ### 2. Instale as dependências
-
+````
 npm install
-
+````
 ### 3. Configure o ambiente
 
 DATABASE_URL="file:./dev.db"
@@ -41,14 +41,14 @@ NEXTAUTH_SECRET="sua_chave_secreta"
 NEXTAUTH_URL="http://localhost:3000"
 
 ###4. Configure o Banco de dados
-
+````
 npx prisma migrate dev --name init
 npx prisma db seed
-
+````
 ### 5. Rode o projeto
-
+````
 npm run dev
-
+````
 🔒 Funcionalidades
 
 Cadastro e login com autenticação via NextAuth
