@@ -1,51 +1,18 @@
 import Header from "../_components/header"
-import { db } from "../_lib/prisma"
 import { authOptions } from "../_lib/auth"
-import { getServerSession, User } from "next-auth"
+import { getServerSession } from "next-auth"
 import { notFound } from "next/navigation"
 import BookingItem from "../_components/booking-item"
+import { getConfirmedBookings } from "../_data/get-confirmed-bookings"
+import { getConcludedBookings } from "../_data/get-concluded-bookings"
 
 const Bookings = async () => {
   const session = await getServerSession(authOptions)
   if (!session?.user) {
     return notFound()
   }
-  const confirmedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as User).id,
-      date: {
-        gte: new Date(),
-      },
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  })
-  const concludedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as User).id,
-      date: {
-        lt: new Date(),
-      },
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  })
+  const confirmedBookings = await getConfirmedBookings()
+  const concludedBookings = await getConcludedBookings()
 
   return (
     <>
@@ -58,7 +25,10 @@ const Bookings = async () => {
               Confirmados
             </h2>
             {confirmedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
+              <BookingItem
+                key={booking.id}
+                booking={JSON.parse(JSON.stringify(booking))}
+              />
             ))}
           </>
         )}
@@ -68,7 +38,10 @@ const Bookings = async () => {
               Finalizados
             </h2>
             {concludedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
+              <BookingItem
+                key={booking.id}
+                booking={JSON.parse(JSON.stringify(booking))}
+              />
             ))}
           </>
         )}

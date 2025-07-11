@@ -13,7 +13,7 @@ import {
 import { Calendar } from "./ui/calendar"
 import { ptBR } from "date-fns/locale"
 import { useEffect, useMemo, useState } from "react"
-import {  isPast, isToday, set } from "date-fns"
+import { isPast, isToday, set } from "date-fns"
 import { createBooking } from "../_actions/create-booking"
 import { useSession } from "next-auth/react"
 import { toast } from "sonner"
@@ -139,15 +139,14 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         date: selectedDate,
       })
       handleBookingSheetOpenChange()
-      toast.success("Reserva realizada com sucesso!",{
+      toast.success("Reserva realizada com sucesso!", {
         action: {
           label: "Ver agendamento",
           onClick: () => {
             router.push("/bookings")
           },
-        }
+        },
       })
-
     } catch (error) {
       console.log(error)
       toast.error("Ocorreu um erro ao realizar a reserva!")
